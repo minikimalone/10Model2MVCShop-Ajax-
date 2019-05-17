@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//WebContent/config/springMVC/common-servlet.xml=euc-kr
+encoding//WebContent/javascript/calendar.js=MS949
+encoding//src/main/java/com/model2/mvc/web/product/ProductController.java=UTF-8
+encoding//src/main/java/com/model2/mvc/web/purchase/PurchaseController.java=UTF-8
+encoding//src/main/resources/config/context-aspect.xml=UTF-8
+encoding//src/main/resources/config/context-common.xml=UTF-8
+encoding//src/main/resources/config/context-transaction.xml=UTF-8
