@@ -1,5 +1,6 @@
 package com.model2.mvc.service.product.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,6 +67,21 @@ public class ProductServiceImpl implements ProductService{
 
 		productDao.updateQuantity(pur);
 		
+	}
+	@Override
+	public List<String> getTagName() throws Exception {
+		// TODO Auto-generated method stub
+		
+	    List<Product> proList = productDao.getTagName();
+	    List<String> tagList = new ArrayList<String>();
+	    
+	    for(int i=0;i<proList.size();i++) {
+	    	tagList.add(proList.get(i).getProdName());
+	    }
+	    
+	    System.out.println(tagList);
+		
+		return tagList;
 	}
 
 } 

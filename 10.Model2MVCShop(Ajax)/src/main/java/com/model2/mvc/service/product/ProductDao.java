@@ -23,7 +23,9 @@ public interface ProductDao {
 	// SELECT LIST
 	public List<Product> getProductList(Search search) throws Exception;
 
-	// °Ô½ÃÆÇ Page Ã³¸®¸¦ À§ÇÑ ÀüÃ¼Row(totalCount)  return
+	// ï¿½Ô½ï¿½ï¿½ï¿½ Page Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼Row(totalCount)  return
 	public int getTotalCount(Search search) throws Exception ;
 		
+	
+	public List<Product> getTagName()throws Exception;
 }

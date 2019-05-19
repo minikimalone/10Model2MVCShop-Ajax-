@@ -16,7 +16,26 @@ public class Product {
 	private int prodTranNo;
 	private int prodQty;
 	private int prodPurQty;
+	private String category1;
+	private String category2;
 	
+	
+	public String getCategory1() {
+		return category1;
+	}
+
+	public void setCategory1(String category1) {
+		this.category1 = category1;
+	}
+
+	public String getCategory2() {
+		return category2;
+	}
+
+	public void setCategory2(String category2) {
+		this.category2 = category2;
+	}
+
 	public Product(){
 	}
 
@@ -101,7 +120,7 @@ public class Product {
 	public String toString() {
 		return "Product [fileName=" + fileName + ", manuDate=" + manuDate + ", price=" + price + ", prodDetail="
 				+ prodDetail + ", prodName=" + prodName + ", prodNo=" + prodNo + ", regDate=" + regDate
-				+ ", prodTranCode=" + prodTranCode + ", prodTranNo=" + prodTranNo + ", prodQty=" + prodQty + ", prodPurQty="
-				+ prodPurQty + "]";
+				+ ", prodTranCode=" + prodTranCode + ", prodTranNo=" + prodTranNo + ", prodQty=" + prodQty
+				+ ", prodPurQty=" + prodPurQty + ", category1=" + category1 + ", category2=" + category2 + "]";
 	}	
 }

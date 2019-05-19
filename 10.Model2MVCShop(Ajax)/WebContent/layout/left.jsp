@@ -70,6 +70,12 @@
 					$(window.parent.frames["rightFrame"].document.location).attr("href","/purchase/listPurchase");
 				});
 				
+				$( ".Depth03:contains('women')" ).on("click" , function() {
+					
+					$(window.parent.frames["rightFrame"].document.location).attr("href","/product/productMain.jsp;");
+				});
+				
+				
 				$( ".Depth03:contains('최근 본 상품')" ).on("click" , function() {
 				history();
 				});
@@ -132,6 +138,7 @@
 						판매상품관리
 					</td>
 				</tr>
+				
 				<tr>
 					<td class="DepthEnd">&nbsp;</td>
 				</tr>
@@ -156,6 +163,11 @@
 					구매이력조회
 				</td>
 			</tr>
+			<tr>
+					<td class="Depth03">
+						women
+					</td>
+				</tr>
 			</c:if>
 			
 			<tr>

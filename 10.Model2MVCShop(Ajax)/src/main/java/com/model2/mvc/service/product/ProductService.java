@@ -1,6 +1,7 @@
 package com.model2.mvc.service.product;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.common.Search;
@@ -18,4 +19,8 @@ public interface ProductService {
 	public void updateProduct(Product product) throws Exception;
 
 	public void updateQuantity(Map<String, Object> pur) throws Exception;
+	
+	public List<String> getTagName()throws Exception;
+	
+	
 }

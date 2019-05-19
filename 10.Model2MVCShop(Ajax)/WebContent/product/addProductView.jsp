@@ -20,11 +20,20 @@
 
 function fncAddProduct(){
 	//Form 유효성 검증
+	
+	var category1 = $("input[name='category1']").val();
+	
  	var name = $("input[name='prodName']").val();
 	var detail = $("input[name='prodDetail']").val();
 	var manuDate =$("input[name='manuDate']").val();
 	var price = $("input[name='price']").val();
 	var prodQty = $("input[name='prodQty']").val();
+	
+	
+	if(category1 == null || category1.length<1){
+		alert("category1은 반드시 입력하여야 합니다.");
+		return;
+	}
 	
 	
 	
@@ -104,20 +113,64 @@ $(function() {
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			상품명 <imgsrc="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			category1 <imgsrc="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="105">
-						<input type="text" name="prodName" class="ct_input_g" 
-									style="width: 100px; height: 19px" maxLength="20">
+						<input type="radio" name="category1" value="man" checked="checked">man
+<input type="radio" name="category1" value="woman">woman
 					</td>
 				</tr>
 			</table>
 		</td>
 	</tr>
+	
+	
+	
+	
+
+		<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	<tr>
+		<td width="104" class="ct_write">
+		category2 <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+		</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">
+		
+				<select id='category2' name='category2' >
+
+<option value='top' selected="selected">top</option>
+<option value='bottom'>bottom</option>
+<option value='dress'>dress</option>
+<option value='bag'>bag</option>
+<option value='shoes'>shoes</option>
+
+</select>
+		</td>
+	</tr>
+	
+		<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	<tr>
+		<td width="104" class="ct_write">
+			상품명  <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+		</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">
+			<input type="text" name="prodName" class="ct_input_g" 
+						style="width: 100px; height: 19px" maxLength="10" minLength="6"/>
+		</td>
+	</tr>
+	
+	
+	
+	
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>

@@ -92,7 +92,9 @@ public class ProductController {
 		
 		
 		
-		String path="C:\\workspace\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles";
+		//String path="C:\\workspace\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles";
+		
+		String path="//Users//minikim//git//10Model2MVCShop-Ajax-//10.Model2MVCShop\\(Ajax\\)/WebContent//images//uploadFiles";
 		String fileName=file.getOriginalFilename();
 		product.setFileName(fileName);
 		FileOutputStream fileOutputStream;
@@ -100,7 +102,8 @@ public class ProductController {
 		try {
 			
 			//nf.createNewFile();
-			fileOutputStream= new FileOutputStream(path+"\\"+fileName);
+			//fileOutputStream= new FileOutputStream(path+"\\"+fileName);
+			fileOutputStream= new FileOutputStream(path+"//"+fileName);
 			fileOutputStream.write(file.getBytes());
 			fileOutputStream.close();
 		}
@@ -108,7 +111,7 @@ public class ProductController {
 			e.printStackTrace();
 		}catch(IOException e) {
 			e.printStackTrace();
-		}
+		}	
 			
 
 		product.setManuDate(product.getManuDate().replace("-", ""));

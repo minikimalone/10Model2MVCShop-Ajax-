@@ -11,16 +11,24 @@ public class Search {
 	private int pageSize;
 	private String orderByLowPrice;
 	private String orderByHighPrice;
+	private String orderByProdNo;
 	
-	
-	//==> ¸®½ºÆ®È­¸é currentPage¿¡ ÇØ´çÇÏ´Â È¸¿øÁ¤º¸¸¦ ROWNUM »ç¿ë SELECT À§ÇØ Ãß°¡µÈ Field 
-		//==> UserMapper.xml ÀÇ 
+	//==> ï¿½ï¿½ï¿½ï¿½Æ®È­ï¿½ï¿½ currentPageï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ROWNUM ï¿½ï¿½ï¿½ SELECT ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ Field 
+		//==> UserMapper.xml ï¿½ï¿½ 
 		//==> <select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
-		//==> ÂüÁ¶
+		//==> ï¿½ï¿½ï¿½ï¿½
 		private int endRowNum;
 		private int startRowNum;
 	
 	
+	public String getOrderByProdNo() {
+			return orderByProdNo;
+		}
+
+		public void setOrderByProdNo(String orderByProdNo) {
+			this.orderByProdNo = orderByProdNo;
+		}
+
 	///Constructor
 	public Search() {
 	}
@@ -87,11 +95,11 @@ public class Search {
 		this.searchKeyword = searchKeyword;
 	}
 
-	//==> Select Query ½Ã ROWNUM ¸¶Áö¸· °ª 
+	//==> Select Query ï¿½ï¿½ ROWNUM ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
 		public int getEndRowNum() {
 			return getCurrentPage()*getPageSize();
 		}
-		//==> Select Query ½Ã ROWNUM ½ÃÀÛ °ª
+		//==> Select Query ï¿½ï¿½ ROWNUM ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		public int getStartRowNum() {
 			return (getCurrentPage()-1)*getPageSize()+1;
 		}
@@ -100,8 +108,8 @@ public class Search {
 		public String toString() {
 			return "Search [currentPage=" + currentPage + ", searchCondition=" + searchCondition + ", searchKeyword="
 					+ searchKeyword + ", menu=" + menu + ", pageSize=" + pageSize + ", orderByLowPrice="
-					+ orderByLowPrice + ", orderByHighPrice=" + orderByHighPrice + ", endRowNum=" + endRowNum
-					+ ", startRowNum=" + startRowNum + "]";
+					+ orderByLowPrice + ", orderByHighPrice=" + orderByHighPrice + ", orderByProdNo=" + orderByProdNo
+					+ ", endRowNum=" + endRowNum + ", startRowNum=" + startRowNum + "]";
 		}
 	
 }

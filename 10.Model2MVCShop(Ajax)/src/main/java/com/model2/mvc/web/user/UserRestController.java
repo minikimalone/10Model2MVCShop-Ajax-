@@ -14,7 +14,7 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
 
-//==> È¸¿ø°ü¸® RestController
+//==> È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ RestController
 @RestController
 @RequestMapping("/user/*")
 public class UserRestController {
@@ -23,7 +23,7 @@ public class UserRestController {
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 	public UserRestController(){
 		System.out.println(this.getClass());
@@ -52,5 +52,14 @@ public class UserRestController {
 		}
 		
 		return dbUser;
+	}
+	
+	
+	@RequestMapping( value="json/addUser" , method=RequestMethod.POST)
+	public User addUser ( @RequestBody User user) throws Exception {
+		
+		userService.addUser(user);
+		
+		return userService.getUser(user.getUserId());
 	}
 }

@@ -15,7 +15,7 @@ import com.model2.mvc.service.product.ProductDao;
 
 
 
-//==> È¸¿ø°ü¸® DAO CRUD ±¸Çö
+//==> È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DAO CRUD ï¿½ï¿½ï¿½ï¿½
 @Repository("productDaoImpl")
 public class ProductDaoImpl implements ProductDao{
 	
@@ -52,7 +52,7 @@ public class ProductDaoImpl implements ProductDao{
 		return sqlSession.selectList("ProductMapper.getProductList",search);
 	}
 	
-	// °Ô½ÃÆÇ Page Ã³¸®¸¦ À§ÇÑ ÀüÃ¼ Row(totalCount)  return
+	// ï¿½Ô½ï¿½ï¿½ï¿½ Page Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ Row(totalCount)  return
 		public int getTotalCount(Search search) throws Exception {
 			return sqlSession.selectOne("ProductMapper.getTotalCount", search);
 		}
@@ -61,5 +61,11 @@ public class ProductDaoImpl implements ProductDao{
 		public void updateQuantity(Map<String, Object> pur) throws Exception {
 		sqlSession.update("ProductMapper.updateQuantity", pur);
 		}
+		
+		@Override
+		public List<Product> getTagName() throws Exception {
+			// TODO Auto-generated method stub
+			return sqlSession.selectList("ProductMapper.tagList");
+		}	
 	}
 	
