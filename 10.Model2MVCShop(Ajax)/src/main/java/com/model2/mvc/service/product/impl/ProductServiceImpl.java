@@ -68,20 +68,18 @@ public class ProductServiceImpl implements ProductService{
 		productDao.updateQuantity(pur);
 		
 	}
+	public void updateQuantity2(Map<String, Object> pur) throws Exception {
+
+		productDao.updateQuantity2(pur);
+		
+	}
 	@Override
-	public List<String> getTagName() throws Exception {
-		// TODO Auto-generated method stub
+	public List<String> getProductName() throws Exception {
+
 		
-	    List<Product> proList = productDao.getTagName();
-	    List<String> tagList = new ArrayList<String>();
+	    List<String> productList = productDao.getProductName();
+	    return productList;
 	    
-	    for(int i=0;i<proList.size();i++) {
-	    	tagList.add(proList.get(i).getProdName());
-	    }
-	    
-	    System.out.println(tagList);
-		
-		return tagList;
 	}
 
 } 

@@ -79,6 +79,32 @@ public class PurchaseController {
 		return "forward:/purchase/addPurchase.jsp";
 	}
 	
+//	@RequestMapping( value="cancelPurchase", method=RequestMethod.POST )
+//	public String cancelPurchase(@ModelAttribute("purchase") Purchase purchase, @ModelAttribute("product") Product product, HttpSession session) throws Exception {
+//		
+//		System.out.println("/cancelPurchase.do");
+//		
+//		int prodNo = product.getProdNo();
+//	
+//		Map<String,Object> pur = new HashMap<String,Object>();
+//		pur.put("purQty", purchase.getPurQty());
+//		pur.put("prodNo", prodNo);
+//		
+//		productService.updateQuantity2(pur);
+//	
+//
+//		product = productService.getProduct(prodNo);
+//		
+//		purchaseService.cancelPurchase(purchase);
+//		System.out.println(purchase);
+//		
+//	
+//		return "forward:/purchase/getPurchase.jsp";
+//	}
+//	
+	
+	
+	
 	
 	@RequestMapping( value="addPurchaseView", method=RequestMethod.GET )
 	//@RequestMapping("/addPurchaseView.do")
@@ -92,11 +118,16 @@ public class PurchaseController {
 		Product product = productService.getProduct(prodNo);
 		
 		model.addAttribute("product", product);
-		
+		if (session.getAttribute("user") == null) {
+
+			return "forward:/user/login";
+		}
+		else{
 		return "forward:/purchase/addPurchaseView.jsp";
+	
 	}
 	
-	
+	}
 	
 	@RequestMapping( value="getPurchase", method=RequestMethod.GET )
 	//@RequestMapping("/getPurchase.do")
@@ -126,6 +157,8 @@ public class PurchaseController {
 		return "redirect:purchase/getPurchase?tranNo="+purchase.getTranNo();
 	}
 	
+	
+	
 	@RequestMapping( value="updatePurchaseView", method=RequestMethod.GET )
 	//@RequestMapping("/updatePurchaseView.do")
 	public String updatePurchaseView(@RequestParam("tranNo") int tranNo,Model model) throws Exception {
@@ -144,15 +177,37 @@ public class PurchaseController {
 	
 	@RequestMapping("/purchase/updateTranCodeListPurchase")
 	//@RequestMapping("/updateTranCode.do")
-	public String updateTranCodeListPurchase(@RequestParam("tranNo") int tranNo,@RequestParam("tranCode") String tranCode) throws Exception {
+	public String updateTranCodeListPurchase(@RequestParam("tranNo") int tranNo,@RequestParam("tranCode") String tranCode, @ModelAttribute("product") Product product, @ModelAttribute("purchase") Purchase purchase) throws Exception {
 		
 		System.out.println("updateTranCodeByTranNo");
 		
-		Purchase purchase = purchaseService.getPurchase(tranNo);
+		System.out.println("/cancelPurchase.do");
+		
+	
+		purchase = purchaseService.getPurchase(tranNo);
 		
 		purchase.setTranCode(tranCode);
 		
 		purchaseService.updateTranCode(purchase);
+		
+		int prodNo = product.getProdNo();
+		
+		
+		if(tranCode.equals("4") || tranCode.equals("5")) {
+		
+			Map<String,Object> pur = new HashMap<String,Object>();
+			pur.put("purQty", purchase.getPurQty());
+			pur.put("prodNo", prodNo);
+			product = productService.getProduct(prodNo);
+
+			productService.updateQuantity2(pur);
+		
+
+
+			System.out.println(purchase);
+			}
+			
+
 		
 		return "redirect:/purchase/listPurchase";
 		

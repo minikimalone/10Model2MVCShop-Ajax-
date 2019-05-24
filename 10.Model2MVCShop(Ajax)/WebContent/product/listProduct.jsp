@@ -7,8 +7,14 @@
 <title>상품 목록조회</title>
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
+<link rel="stylesheet"href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <!-- CDN(Content Delivery Network) 호스트 사용 -->
- <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
  <script type="text/javascript">
  
  
@@ -43,6 +49,39 @@
  
  
   $(function() {
+	  var productList=[];
+	 
+	  $.ajax( 
+				{
+					url : "/product/json/getProductName",
+					method : "GET" ,
+					dataType : "json" ,
+					headers : {
+						"Accept" : "application/json",
+						"Content-Type" : "application/json"
+					},
+	  
+	  
+					success : function(JSONData) {
+	  
+	/*
+						$.each(productList,function(index,value){
+		
+		
+					}
+	*/					
+					  $("#searchKeyword").autocomplete({
+						  source: JSONData
+					  });
+					}
+
+	});
+	  
+	  
+	  
+	  
+	  
+	  
    
     $( "td.ct_btn01:contains('검색')" ).on("click" , function() {
     fncGetList(1);
@@ -65,6 +104,8 @@
       });
   
   }); 
+  
+  
   
 </script>
 </head>
@@ -132,6 +173,8 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
   
   
+  
+
   <td align="right">
   <table border="0" cellspacing="0" cellpadding="0">
    
@@ -159,7 +202,7 @@
     <option value="2" ${! empty search.searchCondition&&search.searchCondition.equals('2') ? 'selected' : ''}>가격 </option>
    </select>
   
-   <input  type="text" name="searchKeyword" value="${! empty search.searchKeyword ? search.searchKeyword : ''}"
+   <input  type="text" name="searchKeyword" id="searchKeyword" value="${! empty search.searchKeyword ? search.searchKeyword : ''}"
      class="ct_input_g" style="width:200px; height:20px" >
   </td>
   <td align="right" width="70">
@@ -244,11 +287,11 @@
   
   <td align="left">
   
-  <c:if test="${product.prodQty ==0}">
+  <c:if test="${product.prodQty <=0}">
     품절
     </c:if> 
    
-    <c:if test="${product.prodQty !=0}">
+    <c:if test="${product.prodQty >0}">
     판매중 (재고 : ${product.prodQty} 개)</c:if>
  
  
@@ -266,6 +309,9 @@
    <c:when test="${product.prodTranCode eq '3  '}">
     배송완료
    </c:when>
+ 
+
+ 
  
   </c:choose>
   </c:if>

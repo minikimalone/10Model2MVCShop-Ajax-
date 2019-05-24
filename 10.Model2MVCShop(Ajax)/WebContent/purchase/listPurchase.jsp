@@ -160,21 +160,31 @@
 		판매중
 		</c:if>
 		<c:if test="${! empty purchase.tranCode && (purchase.tranCode eq '1  ')}">
-		구매완료 
+		구매완료 (배송전)
 		</c:if>
 		<c:if test="${! empty purchase.tranCode && (purchase.tranCode eq '2  ')}">
 		배송중 
 		</c:if>
 		<c:if test="${! empty purchase.tranCode && (purchase.tranCode eq '3  ')}">
-		배송완료  
+		배송완료 (구매확정) 
 		</c:if>
+		
+		<c:if test="${! empty purchase.tranCode && (purchase.tranCode eq '4  ')}">
+		구매취소  
+		</c:if>
+		
+		<c:if test="${! empty purchase.tranCode && (purchase.tranCode eq '5  ')}">
+		반품완료
+		</c:if>
+		
 		</td>
 		<td></td>
 		
 		<td align="left">
 				
 		<c:if test="${! empty purchase.tranCode && (purchase.tranCode eq '2  ')}">
-		<a href= "/purchase/updateTranCodeListPurchase?tranNo=${purchase.tranNo}&tranCode=3">물건 도착</a>
+		<a href= "/purchase/updateTranCodeListPurchase?tranNo=${purchase.tranNo}&tranCode=3">구매확정</a>
+		<a href= "/purchase/updateTranCodeListPurchase?tranNo=${purchase.tranNo}&tranCode=5">반품신청</a>
 		</c:if>
 		<c:if test="${! empty purchase.tranCode && !(purchase.tranCode eq '2  ')}">
 			 

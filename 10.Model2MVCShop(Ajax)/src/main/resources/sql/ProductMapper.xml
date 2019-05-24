@@ -36,6 +36,13 @@
 	 
 	 
 	 <!-- SQL : SELECT ONE -->
+	 
+	 	 <select 	id="getProductName"	parameterType="map">
+		SELECT prod_name 
+		FROM product 
+	 </select>
+	 
+	 
 	 <select 	id="getProduct"	parameterType="string"	resultMap="productSelectMap">
 		SELECT
 		prod_no , prod_name , prod_detail , manufacture_day,  price ,  image_file , reg_date, prod_qty 		
@@ -75,13 +82,26 @@
 	
 	   	WHERE prod_no = #{prodNo}
 	 </update>
+	
+	
+	
+	<update	id="updateQuantity2" parameterType="map"  >
+	   	UPDATE product
+	   	<set>
+	   		prod_qty 	= prod_qty + #{purQty} 
+ 
+	   	</set>
+	
+	   	WHERE prod_no = #{prodNo}
+	 </update>
 		 	
+		 		 	
 	<!-- SQL : SELECT LIST -->
-	
-	<select id="tagList" resultMap="productSelectMap">
-		SELECT prod_name FROM product
-	</select>
-	
+
+
+
+
+
 	
 	<select  id="getProductList"  parameterType="search"	resultMap="productSelectMap">
 	  	SELECT *

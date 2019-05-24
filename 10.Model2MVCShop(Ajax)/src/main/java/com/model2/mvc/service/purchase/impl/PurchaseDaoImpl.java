@@ -16,7 +16,7 @@ import com.model2.mvc.service.purchase.PurchaseDao;
 
 
 
-//==> 회원관리 DAO CRUD 구현
+//==> �쉶�썝愿�由� DAO CRUD 援ы쁽
 @Repository("purchaseDaoImpl")
 public class PurchaseDaoImpl implements PurchaseDao{
 	
@@ -37,6 +37,10 @@ public class PurchaseDaoImpl implements PurchaseDao{
 
 	public void addPurchase(Purchase purchase) throws Exception {
 		sqlSession.insert("PurchaseMapper.addPurchase", purchase);
+	}
+	
+	public void cancelPurchase(Purchase purchase) throws Exception {
+		sqlSession.insert("PurchaseMapper.cancelPurchase", purchase);
 	}
 
 	public Purchase getPurchase(int tranNo) throws Exception{
@@ -69,7 +73,7 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	}
 	
 	
-	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
+	// 寃뚯떆�뙋 Page 泥섎━瑜� �쐞�븳 �쟾泥� Row(totalCount)  return
 	
 	public int getTotalCount(String userId) throws Exception {
 

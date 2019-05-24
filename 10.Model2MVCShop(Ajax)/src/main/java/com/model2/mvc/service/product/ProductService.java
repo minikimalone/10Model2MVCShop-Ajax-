@@ -20,7 +20,7 @@ public interface ProductService {
 
 	public void updateQuantity(Map<String, Object> pur) throws Exception;
 	
-	public List<String> getTagName()throws Exception;
+	public void updateQuantity2(Map<String, Object> pur) throws Exception;
 	
-	
+	public List<String> getProductName()throws Exception;
 }

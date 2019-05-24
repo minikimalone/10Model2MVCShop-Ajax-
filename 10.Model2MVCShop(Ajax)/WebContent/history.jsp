@@ -27,6 +27,14 @@
 		if (history != null) {
 			String[] h = history.split(",");
 			for (int i = 0; i < h.length; i++) {
+				
+				for(int j=0;j<i;j++){
+					
+					if(h[j].equals(h[i])){
+				h[i]="null";
+				}
+				}
+				
 				if (!h[i].equals("null")) {
 %>
 <a href="/product/getProduct?prodNo=<%=h[i]%>&menu=search"

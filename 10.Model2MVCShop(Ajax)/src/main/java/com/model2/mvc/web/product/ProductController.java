@@ -82,6 +82,9 @@ public class ProductController {
 		return "redirect:/product/addProductView.jsp";
 	}
 	
+	
+	
+	
 	@RequestMapping( value="addProduct", method=RequestMethod.POST )
 	//@RequestMapping("/addProduct.do")
 	public String addProduct( @ModelAttribute("product") Product product, @RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -92,9 +95,9 @@ public class ProductController {
 		
 		
 		
-		//String path="C:\\workspace\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles";
+		String path="C:\\workspace\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles";
 		
-		String path="//Users//minikim//git//10Model2MVCShop-Ajax-//10.Model2MVCShop\\(Ajax\\)/WebContent//images//uploadFiles";
+		//String path="//Users//minikim//git//10Model2MVCShop-Ajax-//10.Model2MVCShop\\(Ajax\\)/WebContent//images//uploadFiles";
 		String fileName=file.getOriginalFilename();
 		product.setFileName(fileName);
 		FileOutputStream fileOutputStream;
@@ -102,8 +105,8 @@ public class ProductController {
 		try {
 			
 			//nf.createNewFile();
-			//fileOutputStream= new FileOutputStream(path+"\\"+fileName);
-			fileOutputStream= new FileOutputStream(path+"//"+fileName);
+			fileOutputStream= new FileOutputStream(path+"\\"+fileName);
+			//fileOutputStream= new FileOutputStream(path+"//"+fileName);
 			fileOutputStream.write(file.getBytes());
 			fileOutputStream.close();
 		}
@@ -155,8 +158,7 @@ public class ProductController {
 		
 		
 		page = "forward:/product/getProduct.jsp";
-		
-		
+	
 		}
 	
 		return page;
@@ -171,8 +173,7 @@ public class ProductController {
 		System.out.println("/updateProductView.do");
 		//Business Logic
 		Product product = productService.getProduct(prodNo);
-		// Model ������ View ������������
-		
+
 		
 		model.addAttribute("product", product);
 		
@@ -193,7 +194,7 @@ public class ProductController {
 		
 		
 		
-		String path="C:\\workspace\\09.Model2MVCShop(jQuery)\\WebContent\\images\\uploadFiles";
+		String path="C:\\workspace\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles";
 		String fileName=file.getOriginalFilename();
 		product.setFileName(fileName);
 		FileOutputStream fileOutputStream;
@@ -250,8 +251,7 @@ public class ProductController {
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("search", search);
-		
-		
+	
 		
 		return "forward:/product/listProduct.jsp";
 	}

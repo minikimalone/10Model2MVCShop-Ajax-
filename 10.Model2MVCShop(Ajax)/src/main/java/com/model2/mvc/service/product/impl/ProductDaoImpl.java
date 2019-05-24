@@ -61,11 +61,13 @@ public class ProductDaoImpl implements ProductDao{
 		public void updateQuantity(Map<String, Object> pur) throws Exception {
 		sqlSession.update("ProductMapper.updateQuantity", pur);
 		}
-		
+		public void updateQuantity2(Map<String, Object> pur) throws Exception {
+			sqlSession.update("ProductMapper.updateQuantity2", pur);
+			}
 		@Override
-		public List<Product> getTagName() throws Exception {
+		public List<String> getProductName() throws Exception {
 			// TODO Auto-generated method stub
-			return sqlSession.selectList("ProductMapper.tagList");
+			return sqlSession.selectList("ProductMapper.getProductName");
 		}	
 	}
 	

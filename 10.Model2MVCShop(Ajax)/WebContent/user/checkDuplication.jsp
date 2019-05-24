@@ -60,6 +60,49 @@
 		});
 		
 		
+		
+		
+		$("#userId").change(function() {
+			
+			var userId = $("#userId").val();
+			$.ajax( 
+					{
+						url : "/user/json/checkDuplication/"+userId ,
+						method : "POST" ,
+						dataType : "json" ,
+						headers : {
+							"Accept" : "application/json",
+							"Content-Type" : "application/json"
+						},
+						success : function(JSONData) {
+						if(JSONData){
+							$("#userId").text("사용 가능한 아이디입니다.");
+						}else{
+							$("#userId").text("사용중인 아이디입니다.");
+							
+						}
+						}
+						
+				});
+				////////////////////////////////////////////////////////////////////////////////////////////
+			
+	});
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		//==>"사용"  Event 처리
 		$(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)

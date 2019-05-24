@@ -59,6 +59,49 @@
 			$("form").attr("method" , "POST").attr("action" , "/user/addUser").submit();
 		}
 		
+		
+		 $(function() {
+		
+		$("#userId").keyup(function() {
+			
+			var userId = $("#userId").val();
+			
+			if(userId == ""){
+				
+				$("#checkDuplication").text("id를 입력하세요.");
+			}else {
+			
+			
+			$.ajax( 
+					{
+						url : "/user/json/checkDuplication/"+userId ,
+						method : "GET" ,
+						dataType : "json" ,
+						headers : {
+							"Accept" : "application/json",
+							"Content-Type" : "application/json"
+						},
+						success : function(JSONData) {
+							
+						 if(JSONData.result){
+							$("#checkDuplication").text("사용 가능한 id입니다.");
+						}else{
+							$("#checkDuplication").text("사용중인 id입니다.");
+							
+						}
+						}
+						
+				});
+			}
+				////////////////////////////////////////////////////////////////////////////////////////////
+			
+	});
+	
+			});	
+			
+		
+		
+		
 		//==>"가입"  Event 연결
 		 $(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
@@ -185,17 +228,16 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="105">
-						<input 	type="text" name="userId" class="ct_input_bg" 
+						<input id="userId"	type="text" name="userId" class="ct_input_bg" 
 										style="width:100px; height:19px"  maxLength="20" >
+					<div id=checkDuplication></div>
 					</td>
 					<td>
 						<table border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="4" height="21">
-									<img src="/images/ct_btng01.gif" width="4" height="21"/>
-								</td>
-								<td align="center" background="/images/ct_btng02.gif" class="ct_btn" style="padding-top:3px;">
-									 ID중복확인
+								
+								
+									<div id=checkDuplication></div>
 								</td>
 								<td width="4" height="21">
 									<img src="/images/ct_btng03.gif" width="4" height="21"/>

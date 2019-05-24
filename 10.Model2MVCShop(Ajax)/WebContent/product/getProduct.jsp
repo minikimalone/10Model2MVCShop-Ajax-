@@ -23,7 +23,14 @@
 			});
 			
 			 $( "td.ct_btn01:contains('구매')" ).on("click" , function() {
+		
+					
+				
+				if(${product.prodQty} > 0){
 					self.location = "/purchase/addPurchaseView?prod_no=${product.prodNo}"
+				}else{
+					alert("죄송합니다. 품절된 상품입니다.");
+				}
 				});
 			 
 			 $( "td.ct_btn01:contains('확인')" ).on("click" , function() {

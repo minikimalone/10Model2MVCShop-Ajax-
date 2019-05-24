@@ -12,15 +12,33 @@ public class Search {
 	private String orderByLowPrice;
 	private String orderByHighPrice;
 	private String orderByProdNo;
+	private String category1;
+	private String category2;
 	
-	//==> ����Ʈȭ�� currentPage�� �ش��ϴ� ȸ�������� ROWNUM ��� SELECT ���� �߰��� Field 
-		//==> UserMapper.xml �� 
+	//==> 占쏙옙占쏙옙트화占쏙옙 currentPage占쏙옙 占쌔댐옙占싹댐옙 회占쏙옙占쏙옙占쏙옙占쏙옙 ROWNUM 占쏙옙占� SELECT 占쏙옙占쏙옙 占쌩곤옙占쏙옙 Field 
+		//==> UserMapper.xml 占쏙옙 
 		//==> <select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
-		//==> ����
+		//==> 占쏙옙占쏙옙
 		private int endRowNum;
 		private int startRowNum;
 	
 	
+	public String getCategory1() {
+			return category1;
+		}
+
+		public void setCategory1(String category1) {
+			this.category1 = category1;
+		}
+
+		public String getCategory2() {
+			return category2;
+		}
+
+		public void setCategory2(String category2) {
+			this.category2 = category2;
+		}
+
 	public String getOrderByProdNo() {
 			return orderByProdNo;
 		}
@@ -95,11 +113,11 @@ public class Search {
 		this.searchKeyword = searchKeyword;
 	}
 
-	//==> Select Query �� ROWNUM ������ �� 
+	//==> Select Query 占쏙옙 ROWNUM 占쏙옙占쏙옙占쏙옙 占쏙옙 
 		public int getEndRowNum() {
 			return getCurrentPage()*getPageSize();
 		}
-		//==> Select Query �� ROWNUM ���� ��
+		//==> Select Query 占쏙옙 ROWNUM 占쏙옙占쏙옙 占쏙옙
 		public int getStartRowNum() {
 			return (getCurrentPage()-1)*getPageSize()+1;
 		}
@@ -109,7 +127,8 @@ public class Search {
 			return "Search [currentPage=" + currentPage + ", searchCondition=" + searchCondition + ", searchKeyword="
 					+ searchKeyword + ", menu=" + menu + ", pageSize=" + pageSize + ", orderByLowPrice="
 					+ orderByLowPrice + ", orderByHighPrice=" + orderByHighPrice + ", orderByProdNo=" + orderByProdNo
-					+ ", endRowNum=" + endRowNum + ", startRowNum=" + startRowNum + "]";
+					+ ", category1=" + category1 + ", category2=" + category2 + ", endRowNum=" + endRowNum
+					+ ", startRowNum=" + startRowNum + "]";
 		}
 	
 }

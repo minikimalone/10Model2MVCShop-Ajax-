@@ -15,6 +15,7 @@
 	<script type="text/javascript">
 
 	
+	
 	 $(function() {
 			
 			 $( "td.ct_btn01:contains('수정')" ).on("click" , function() {
@@ -23,10 +24,20 @@
 			});
 			
 			 
+			 $( "td.ct_btn01:contains('구매취소')" ).on("click" , function() {
+		
+					self.location = "/purchase/updateTranCodeListPurchase?tranNo=${purchase.tranNo}&tranCode=4&prodNo=${purchase.purchaseProd.prodNo}"
+						
+			});
+			 
+	
 			 $( "td.ct_btn01:contains('확인')" ).on("click" , function() {
 					self.location = "/purchase/listPurchase"
 				
 			 });
+			 
+			 
+		
 		});
 	
 	
@@ -95,6 +106,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<c:if test="${purchase.paymentOption eq '1  '}">
+			
 			현금구매
 			</c:if>
 			<c:if test="${purchase.paymentOption eq '2  '}">
@@ -178,7 +190,8 @@
 		<td align="right">
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<c:if test="${purchase.tranCode eq '1'}">
+		
+					<c:if test="${! empty purchase.tranCode && (purchase.tranCode eq '1  ')}">
 					
 					<td width="17" height="23">
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
@@ -189,8 +202,25 @@
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
 					</td>
-					
+					<td width="17" height="23">
+					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
+				</td>
+				<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
+				구매취소
+				</td>
+				<td width="14" height="23">
+					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
+				</td>
 					</c:if>
+					
+					
+					
+					<tr>
+		
+				
+					
+					
+					
 					<td width="30"></td>
 					
 					<td width="17" height="23">
@@ -202,6 +232,8 @@
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif"width="14" height="23"/>
 					</td>
+					
+					
 				</tr>
 			</table>
 		</td>

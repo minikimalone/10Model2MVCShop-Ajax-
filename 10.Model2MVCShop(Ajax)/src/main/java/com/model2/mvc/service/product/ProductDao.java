@@ -20,6 +20,7 @@ public interface ProductDao {
 	
 	public void updateQuantity(Map<String, Object> pur) throws Exception;
 	
+	public void updateQuantity2(Map<String, Object> pur) throws Exception;
 	// SELECT LIST
 	public List<Product> getProductList(Search search) throws Exception;
 
@@ -27,5 +28,5 @@ public interface ProductDao {
 	public int getTotalCount(Search search) throws Exception ;
 		
 	
-	public List<Product> getTagName()throws Exception;
+	public List<String> getProductName() throws Exception;
 }

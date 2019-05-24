@@ -10,6 +10,8 @@ public interface PurchaseService {
 
 	public void addPurchase(Purchase purchase) throws Exception;
 	
+	public void cancelPurchase(Purchase purchase) throws Exception;
+	
 	public Purchase getPurchase(int tranNo) throws Exception;
 	
 	public Purchase getPurchase2(int prodNo) throws Exception;
